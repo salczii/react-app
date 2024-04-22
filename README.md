@@ -1,5 +1,3 @@
-# Opanuj Frontend: AI Edition - Frontend Bootstrap
-
 ![](./_resources/img/header.png)
 
 ## Co w środku?
