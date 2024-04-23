@@ -1,5 +1,5 @@
 {
   "git": {
-    "deploymentEnabled": false // lub obiekt z parami "branchName": boolean
+    "deploymentEnabled": false
   }
 }
