@@ -1,4 +1,4 @@
-name: Hello world!
+name: Deploy to netlify
 
 on:
   workflow_dispatch:
