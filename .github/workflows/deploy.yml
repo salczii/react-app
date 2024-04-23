@@ -20,7 +20,7 @@ jobs:
       - name: build app
         run: npm run build
       - name: deploy to Netlify
-        uses: nwtgck/actions-netlify@3.0
+        uses: nwtgck/actions-netlify@v3.0
         with:
           publish-dir: ./dist
           production-branch: master
