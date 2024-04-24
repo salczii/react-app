@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
+
       - name: Cache Node.js modules
         uses: actions/cache@v4
         with:
@@ -30,14 +31,19 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
       - name: Install dependencies
         run: npm ci
+
       - name: lint code
         run: npm run lint
+
       - name: run tests
         run: npm run test
+
       - name: build app
         run: npm run build
+
       - name: deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
         with:
@@ -45,11 +51,15 @@ jobs:
           production-branch: master
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: 'Deploy from GitHub Actions'
+
       - name: Install Vercel CLI
         run: npm install --global vercel@canary
+
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Build Project Artifacts
+
+      - name: Build Project
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Deploy Project Artifacts to Vercel
+
+      - name: Deploy Project
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
