@@ -25,7 +25,6 @@ const Characters = () => {
         ))}
       </ul>
       <p>zmiany</p>
-      <p>zmiany</p>
     </div>
   );
 };
