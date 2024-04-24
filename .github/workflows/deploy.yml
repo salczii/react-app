@@ -8,16 +8,9 @@ env:
   NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
 on:
-  workflow_dispatch:
-    inputs:
-      deploy-netlify:
-        type: boolean
-        description: Enable Netlify deployment
-        default: true
-      deploy-vercel:
-        type: boolean
-        description: Enable Vercel deployment
-        default: true
+  pull_request:
+    branches:
+      - master
 
 jobs:
   deploy:
@@ -45,7 +38,6 @@ jobs:
         run: npm run build
       - name: deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
-        if: ${{ inputs.deploy-netlify }}
         with:
           publish-dir: ./dist
           production-branch: master

@@ -1,4 +1,4 @@
-## Co w środku?
+## Co w środku? nowy readme
 
 Bootstrap projektu opartego o następujące narzędzia:
 
