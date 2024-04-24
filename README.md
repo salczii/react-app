@@ -1,4 +1,5 @@
 ## Co w środku? nowy readme
+nowy tekst
 
 Bootstrap projektu opartego o następujące narzędzia:
 
