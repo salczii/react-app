@@ -63,8 +63,8 @@ jobs:
           script: |
             const { DEPLOY_URL } = process.env;
             github.rest.issues.createComment({
-              owner: context.repo.owner,
               issue_number: context.issue.number,
-              body: `🔍 Preview URL: ${DEPLOY_URL}`
+              owner: context.repo.owner,
               repo: context.repo.repo,
+              body: `🔍 Preview URL: ${DEPLOY_URL}`
             });
