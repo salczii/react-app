@@ -51,5 +51,20 @@ jobs:
       - name: Build Project
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Deploy Project
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy to Vercel
+        run: |
+          DEPLOY_OUTPUT="$(vercel deploy --token=${{ secrets.VERCEL_TOKEN }})"
+          DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep http | tail -n 1)
+          echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_ENV
+
+      - name: Comment with preview URL
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { DEPLOY_URL } = process.env;
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              issue_number: context.issue.number,
+              body: `🔍 Preview URL: ${DEPLOY_URL}`
+              repo: context.repo.repo,
+            });
