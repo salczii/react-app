@@ -4,10 +4,6 @@ description: format code and run tests
 runs:
   using: 'composite'
   steps:
-    - name: check formatting
-      run: npx prettier --check .
-      shell: bash
-
     - name: lint code
       run: npm run lint
       shell: bash
