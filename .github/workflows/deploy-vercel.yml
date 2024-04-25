@@ -29,3 +29,8 @@ jobs:
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      - name: Run e2e Tests
+        run: npm run test:e2e
+        env:
+          CI: true
+          E2E_BASE_URL: https://react-app-hazel-eta.vercel.app/
