@@ -1,0 +1,17 @@
+name: format-and-test
+description: format code and run tests
+
+runs:
+  using: 'composite'
+  steps:
+    - name: check formatting
+      run: npx prettier --check .
+      shell: bash
+
+    - name: lint code
+      run: npm run lint
+      shell: bash
+
+    - name: run tests
+      run: npm run test
+      shell: bash

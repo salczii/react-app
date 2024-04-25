@@ -15,11 +15,8 @@ jobs:
       - name: Configure node
         uses: ./.github/actions/setup-project
 
-      - name: lint code
-        run: npm run lint
-
-      - name: run tests
-        run: npm run test
+      - name: format and test
+        uses: ./.github/actions/format-and-test
 
       - name: build app
         run: npm run build
