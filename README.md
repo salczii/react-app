@@ -1,5 +1,4 @@
-## Co w środku? nowy readme
-nowy tekst
+## Co w środku?
 
 Bootstrap projektu opartego o następujące narzędzia:
 
