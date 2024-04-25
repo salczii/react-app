@@ -1,8 +1,4 @@
-name: pull_request
-
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+name: Pull Request
 
 on:
   pull_request:
@@ -10,7 +6,9 @@ on:
       - master
 
 jobs:
-  deploy:
+  pr-check:
+    environment:
+      name: 'Preview'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -19,14 +17,11 @@ jobs:
       - name: Configure node
         uses: ./.github/actions/setup-project
 
-      - name: lint code
+      - name: Lint code
         run: npm run lint
 
-      - name: run tests
+      - name: Run unit tests
         run: npm run test
-
-      - name: build app
-        run: npm run build
 
       - name: Deploy app to Vercel preview env
         uses: ./.github/actions/deploy-vercel

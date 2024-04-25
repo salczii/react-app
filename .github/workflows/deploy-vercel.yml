@@ -5,6 +5,8 @@ on:
 
 jobs:
   deploy-vercel:
+    environment:
+      name: 'Staging'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
