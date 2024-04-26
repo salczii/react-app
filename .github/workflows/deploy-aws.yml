@@ -1,0 +1,25 @@
+name: deploy-aws
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-netlify:
+    environment:
+      name: 'Production'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure node
+        uses: ./.github/actions/setup-project
+
+      - name: format and test
+        uses: ./.github/actions/format-and-test
+
+      - name: build app
+        run: npm run build
+
+      - name: deploy to AWS
+        run: aws s3 sync ./dist s3://opanuj-frontend-catalog
