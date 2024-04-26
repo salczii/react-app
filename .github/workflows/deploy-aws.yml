@@ -32,4 +32,4 @@ jobs:
         run: aws s3 sync ./dist s3://opanuj-frontend-catalog
 
       - name: Invalidate CloudFront cache
-        run: aws cloudfront create-invalidation --distribution-id dE1FNHIZ8KXWZY2 --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id E1FNHIZ8KXWZY2 --paths "/*"
