@@ -9,13 +9,19 @@ jobs:
   deploy-netlify:
     uses: ./.github/workflows/deploy-netlify.yml
     secrets: inherit
+    with:
+      environment: 'Development'
 
   deploy-vercel:
     needs: deploy-netlify
     uses: ./.github/workflows/deploy-vercel.yml
     secrets: inherit
+    with:
+      environment: 'Staging'
 
-  # deploy-aws:
-  #   needs: deploy-vercel
-  #   uses: ./.github/workflows/deploy-aws.yml
-  #   secrets: inherit
+  deploy-aws:
+    needs: deploy-vercel
+    uses: ./.github/workflows/deploy-aws.yml
+    secrets: inherit
+    with:
+      environment: 'Production'
