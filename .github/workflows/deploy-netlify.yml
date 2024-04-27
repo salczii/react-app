@@ -26,7 +26,7 @@ jobs:
       - name: build app
         run: npm run build
         env:
-          VITE_ENVIRONMENT: inputs.environment
+          VITE_ENVIRONMENT: ${{ inputs.environment }}
 
       - name: deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0

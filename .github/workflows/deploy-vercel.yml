@@ -26,7 +26,7 @@ jobs:
       - name: build app
         run: npm run build
         env:
-          VITE_ENVIRONMENT: 'Staging'
+          VITE_ENVIRONMENT: ${{ inputs.environment }}
 
       - name: Deploy app to Vercel production env
         uses: ./.github/actions/deploy-vercel
