@@ -22,7 +22,7 @@ jobs:
       - name: Check Environment Variable
         run: echo "Environment is $VITE_ENVIRONMENT"
         env:
-          VITE_ENVIRONMENT: Staging
+          VITE_ENVIRONMENT: ${{ inputs.environment }}
 
       - name: format and test
         uses: ./.github/actions/format-and-test
