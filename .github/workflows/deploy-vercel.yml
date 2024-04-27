@@ -2,6 +2,11 @@ name: deploy-vercel
 
 on:
   workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+        default: 'Staging'
 
 jobs:
   deploy-vercel:
@@ -20,6 +25,8 @@ jobs:
 
       - name: build app
         run: npm run build
+        env:
+          VITE_ENVIRONMENT: 'Staging'
 
       - name: Deploy app to Vercel production env
         uses: ./.github/actions/deploy-vercel
