@@ -15,8 +15,13 @@ runs:
     - uses: hashicorp/setup-terraform@v3
 
     - name: Terraform init
-      run: cd terraform && terraform init && terraform validate && terraform plan && terraform apply -auto-approve
-    shell: bash
-    env:
-      AWS_ACCESS_KEY_ID: ${{ inputs.aws-access-key-id }}
-      AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}
+      run: |
+        cd terraform
+        terraform init
+        terraform validate
+        terraform plan
+        terraform apply -auto-approve
+      shell: bash
+      env:
+        AWS_ACCESS_KEY_ID: ${{ inputs.aws-access-key-id }}
+        AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}
