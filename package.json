@@ -1,6 +1,6 @@
 {
   "name": "frontend-bootstrap",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Opinionated frontend bootstrap",
   "main": "index.js",
   "type": "module",
