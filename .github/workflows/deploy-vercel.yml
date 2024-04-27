@@ -19,6 +19,11 @@ jobs:
       - name: Configure node
         uses: ./.github/actions/setup-project
 
+      - name: Check Environment Variable
+        run: echo "Environment is $VITE_ENVIRONMENT"
+        env:
+          VITE_ENVIRONMENT: ${{ inputs.environment }}
+
       - name: format and test
         uses: ./.github/actions/format-and-test
 

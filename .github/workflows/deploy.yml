@@ -10,7 +10,7 @@ jobs:
     uses: ./.github/workflows/deploy-netlify.yml
     secrets: inherit
     with:
-      environment: 'Develop'
+      environment: 'Development'
 
   deploy-vercel:
     needs: deploy-netlify
