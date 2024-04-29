@@ -20,3 +20,11 @@ terraform {
 provider "aws" {
   region = "eu-central-1"
 }
+
+module "perf" {
+  source = "./modules/perf"
+
+  lambda_function_name = "website_perf_check"
+
+  lambda_source_dir = "${path.root}/../lib/lambda-perf"
+}
