@@ -23,6 +23,7 @@ jobs:
         run: echo "Environment is $VITE_ENVIRONMENT"
         env:
           VITE_ENVIRONMENT: ${{ inputs.environment }}
+          VITE_AWS_MONITORING_API: ${{ secrets.VITE_AWS_MONITORING_API }}
 
       - name: format and test
         uses: ./.github/actions/format-and-test
