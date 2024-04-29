@@ -14,7 +14,7 @@ const Characters = () => {
     console.log(import.meta.env.VITE_AWS_MONITORING_API);
     fetch(`${import.meta.env.VITE_AWS_MONITORING_API}/prod/monitoring`, {
       method: 'POST',
-      mode: 'cors',
+      mode: 'no-cors',
       body: JSON.stringify({
         loadTimeMs: fetchData.responseEnd,
       }),
