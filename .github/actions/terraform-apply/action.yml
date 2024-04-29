@@ -15,12 +15,7 @@ runs:
     - uses: hashicorp/setup-terraform@v3
 
     - name: Terraform init
-      run: |
-        cd terraform
-        terraform init
-        terraform validate
-        terraform plan
-        terraform apply -auto-approve
+      run: cd terraform && terraform init && terraform validate -no-color && terraform plan && terraform apply --auto-approve
       shell: bash
       env:
         AWS_ACCESS_KEY_ID: ${{ inputs.aws-access-key-id }}

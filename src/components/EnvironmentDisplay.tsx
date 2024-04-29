@@ -8,6 +8,7 @@ export const EnvironmentDisplay = () => {
     <div className="bg-amber-100 rounded w-fit p-4 absolute right-0 m-6">
       <p>
         ENV: {appEnvironment} - VER: {appVersion}
+        nowy
       </p>
     </div>
   );
