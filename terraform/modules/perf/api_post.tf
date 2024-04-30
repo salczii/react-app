@@ -27,28 +27,5 @@ resource "aws_api_gateway_integration" "lambda_integration" {
 }
 
 
-//add cors by me
-resource "aws_api_gateway_method_response" "post_cors_response" {
-  rest_api_id   = aws_api_gateway_rest_api.api.id
-  resource_id   = aws_api_gateway_resource.monitoring_resource.id
-  http_method   = "POST"
-  status_code   = "200"
-
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = true
-  }
-}
-
-resource "aws_api_gateway_integration_response" "post_cors_integration_response" {
-  rest_api_id   = aws_api_gateway_rest_api.api.id
-  resource_id   = aws_api_gateway_resource.monitoring_resource.id
-  http_method   = "POST"
-  status_code   = "200"
-
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = "'*'"
-  }
-}
-
 
 
