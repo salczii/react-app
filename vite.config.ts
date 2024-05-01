@@ -17,7 +17,7 @@ export default defineConfig({
     react(),
     process.env.VITE_ENVIRONMENT === 'production' &&
       sentryVitePlugin({
-        org: '.',
+        org: 'c65c951f0bd4',
         project: 'rm-catalog',
         authToken: process.env.SENTRY_AUTH_TOKEN,
       }),
