@@ -4,7 +4,7 @@ export const EnvironmentDisplay = () => {
   const appEnvironment = import.meta.env.VITE_ENVIRONMENT;
   const appVersion = __APP_VERSION__;
 
-  if (appEnvironment === 'development') {
+  if (appEnvironment === 'production') {
     return null;
   }
 
