@@ -16,7 +16,7 @@ initSentry();
 
 const envName = import.meta.env.VITE_ENVIRONMENT || 'preview';
 const featurevisor = createInstance({
-  datafileUrl: `https://d3q30uxlfnbhp4.cloudfront.net/datafiles/${envName}/datafile-tag-all.json`,
+  datafileUrl: `https://d3q30uxlfnbhp4.cloudfront.net/datafiles/${envName.toLowerCase()}/datafile-tag-all.json`,
 });
 
 const router = createHashRouter([
