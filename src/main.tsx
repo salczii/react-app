@@ -6,11 +6,18 @@ import { fetchCharacter, fetchCharacters } from './loaders/CharacterLoader';
 import { CharacterRouteParams } from './types/types';
 import { ConfigProvider } from './context/ConfigContext';
 import { initSentry } from './Sentry';
+import { createInstance } from '@featurevisor/sdk';
+import { FeaturevisorProvider } from '@featurevisor/react';
 
 const Characters = lazy(() => import('./pages/Characters'));
 const CharacterDetails = lazy(() => import('./pages/CharacterDetails'));
 
 initSentry();
+
+const envName = import.meta.env.VITE_ENVIRONMENT || 'preview';
+const featurevisor = createInstance({
+  datafileUrl: `https://d3q30uxlfnbhp4.cloudfront.net/datafiles/${envName}/datafile-tag-all.json`,
+});
 
 const router = createHashRouter([
   {
@@ -35,8 +42,10 @@ const router = createHashRouter([
 
 ReactDOM.createRoot(document.getElementById('app') as HTMLElement).render(
   <React.StrictMode>
-    <ConfigProvider>
-      <RouterProvider router={router} />
-    </ConfigProvider>
+    <FeaturevisorProvider instance={featurevisor}>
+      <ConfigProvider>
+        <RouterProvider router={router} />
+      </ConfigProvider>
+    </FeaturevisorProvider>
   </React.StrictMode>,
 );

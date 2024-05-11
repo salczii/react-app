@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Character } from '../../lib/rick-and-morty-api-client';
+import { useFlag } from '@featurevisor/react';
 
 const Characters = () => {
   const { characters } = useLoaderData() as { characters: Character[] };
+
+  const isPaginationEnabled = useFlag('pagination', {
+    country: new URLSearchParams(window.location.search).get('country'),
+  });
 
   useEffect(() => {
     const fetchData: Partial<PerformanceResourceTiming> = performance.getEntriesByName(
       'https://rickandmortyapi.com/api/character',
     )[0]!;
-    console.log('fetchData:', fetchData);
-    console.log('fetchData.responseEnd:', fetchData.responseEnd);
-    console.log(import.meta.env.VITE_AWS_MONITORING_API);
     fetch(`${import.meta.env.VITE_AWS_MONITORING_API}`, {
       method: 'POST',
       mode: 'cors',
@@ -40,6 +42,7 @@ const Characters = () => {
           </li>
         ))}
       </ul>
+      {isPaginationEnabled && <div>My feature flag feature</div>}
     </div>
   );
 };
